@@ -1,0 +1,22 @@
+// Address : https://leetcode.com/contest/leetcode-weekly-contest-19/problems/base-7/
+// Author : itachigorun
+// Date : 2017-02-12
+
+
+class Solution {
+public:
+    string convertTo7(int num) {
+        string res="";
+        if(num<0){
+            res+="-";
+            num=-num;
+        }
+        string remain="";
+        while(num>0){
+            remain+=char('0'+num%7);
+            num/=7;
+        }
+        for(int i=(int)remain.size()-1;i>=0;i--)res+=remain[i];
+        return res.empty()? "0":res;
+    }
+};
