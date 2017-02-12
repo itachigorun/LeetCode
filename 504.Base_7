@@ -15,41 +15,34 @@
 * Note: The input will be in range of [-1e7, 1e7].
 ***************************************************************/
 
-/* the first method */
+/* the first method--c++ */
 
 class Solution {
 public:
     string convertTo7(int num) {
-        string res = "";
-        if(num < 0){
-            res += "-";
+        if(num == 0) return "0";
+        bool isNegative = (num < 0);
+        if(num < 0)
             num =- num;
-        }
-        string remain = "";
+
+        string ans = "";
         while(num){
-            remain += char('0' + num % 7);
+            ans = to_string(num % 7) + ans;  /* [to_string(num % 7) + ans] is not equal [ans + to_string(num % 7)] */
+            /* ans += char('0' + num % 7) */
             num /= 7;
         }
-        reverse(remain.begin(), remain.end());
-        res += remain;
+        //reverse(ans.begin(), ans.end());
         // the second method
-        // for(int i = (int)remain.size()-1; i >= 0; i--)res += remain[i];
-        return res.empty()? "0" : res;
+        // for(int i = (int)ans.size()-1; i >= 0; i--)res += ans[i];
+        return isNegative ? "-" + ans : ans;
     }
 };
 
-/* the second method */
+
+/* the second method--java */
 
 public class Solution {
     public String convertTo7(int num) {
-        if(num == 0) return "0";
-        boolean isNegative = (num < 0);
-        if(isNegative) num = - num;
-        String s = "";
-        while(num != 0){
-            s = num % 7 + s;     /* (num % 7 + s) is not equal (s + num % 7) */
-            num = num / 7;
-        }
-        return isNegative ? "-" + s : s;
+        return Integer.toString(num, 7);
     }
 }
