@@ -1,6 +1,6 @@
 // Address : https://leetcode.com/contest/leetcode-weekly-contest-19/problems/base-7/
-// Author : itachigorun
-// Date : 2017-02-12
+// Author  : itachigorun
+// Date    : 2017-02-12
 
 /**************************************************************
 * Given an integer, return its base 7 string representation.
