@@ -1,0 +1,62 @@
+//Address: https://leetcode.com/contest/leetcode-weekly-contest-20/problems/detect-capital/
+//Date:    2017-02-19
+//Author:  itachigorun
+
+1.
+bool detectCapitalUse(char* word) {
+    if(word[1] == '\0')
+        return true;
+    bool firstLetter = word[0] < 'a'? true: false;
+    bool isUppercase = false;
+    bool isLowercase = false;
+    for(int i = 1; word[i] != '\0'; i++)
+        if(word[i] < 'a')
+            isUppercase = true;
+        else
+            isLowercase = true;
+            
+    if(firstLetter)
+        return (isUppercase && isLowercase)? false: true;
+    else
+        return (isLowercase == true)&&(isUppercase == false)? true:false;
+        
+}
+
+
+2.
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int u = 0, l = 0;
+        for (auto &c : word)
+            if (c >= 'A' && c <= 'Z') u++;
+            else l++;
+        if (u == 0 || l == 0) return true;
+        if (u == 1 && word[0] >= 'A' && word[0] <= 'Z') return true;
+        
+        return false;
+    }
+};
+
+3.
+public class Solution {
+    public boolean detectCapitalUse(String word) {
+        return word.matches("[A-Z]*") || word.matches("[A-Z]?[a-z]+");
+    }
+}
+
+4.
+class Solution(object):
+    def detectCapitalUse(self, word):
+        """
+        :type word: str
+        :rtype: bool
+        """
+        if word == word.upper():
+            return True
+        if word == word.lower():
+            return True
+        if (word[:1] == word[:1].upper()) and (word[1:] == word[1:].lower()):
+            return True
+        return False
+        
