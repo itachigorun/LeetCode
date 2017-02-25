@@ -1,6 +1,6 @@
 //Address: https://leetcode.com/contest/leetcode-weekly-contest-20/problems/detect-capital/
-//Date:    2017-02-19
 //Author:  itachigorun
+//Date:    2017-02-19
 
 1.
 bool detectCapitalUse(char* word) {
