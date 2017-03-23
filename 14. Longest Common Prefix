@@ -38,3 +38,54 @@ char* longestCommonPrefix(char** strs, int strsSize) {
    
        return strs[0];
 }
+
+2. C++
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string prefix = "";
+        for(int idx=0; strs.size()>0; prefix+=strs[0][idx], idx++)
+            for(int i=0; i<strs.size(); i++)
+                if(idx >= strs[i].size() ||(i > 0 && strs[i][idx] != strs[i-1][idx]))
+                    return prefix;
+        return prefix;
+    }
+};
+
+3. Python
+
+def longestCommonPrefix(self, strs):
+    def lcp(s, t):
+        if len(s)>len(t):
+            s, t = t, s
+        for i in range(len(s)):
+            if s[i]!=t[i]:
+                return s[:i]
+        return s
+    return reduce(lcp,strs) if strs else ""
+
+4. Python
+
+import os
+
+class Solution:
+    # @param {string[]} strs
+    # @return {string}
+    def longestCommonPrefix(self, strs):
+        return os.path.commonprefix(strs)
+
+5. Python
+
+ def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ""
+        shortest = min(strs,key=len)
+        for i, ch in enumerate(shortest):
+            for other in strs:
+                if other[i] != ch:
+                    return shortest[:i]
+        return shortest 
