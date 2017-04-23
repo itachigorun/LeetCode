@@ -1,0 +1,30 @@
+// Address : https://leetcode.com/contest/leetcode-weekly-contest-29/problems/binary-tree-tilt/
+// Author  : itachigorun
+// Date    : 2017-04-23
+
+C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int ans = 0;
+    int findTilt(TreeNode* root) {
+        ans = 0;
+        dfs(root);
+        return ans;
+    }
+    int dfs(TreeNode *u) {
+        if (!u) return 0;
+        int l = dfs(u->left);
+        int r = dfs(u->right);
+        ans += abs(l-r);
+        return l+r +u->val;
+    }
+};
