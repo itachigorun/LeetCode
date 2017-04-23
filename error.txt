@@ -1,0 +1,19 @@
+char* longestCommonPrefix(char** strs, int strsSize) {
+    int j = 0;
+    int max = -1;
+    int pre_max = 0;
+    int flag;
+    char ret_char[20];
+    if(strsSize == 0)
+        return "";
+    for(int i = 1; i < strsSize ; i++){
+        for(j = 0, max = -1; j < strlen(strs[i]) -1 && sizeof(strs[i]) >= (pre_max + 2) && sizeof(strs[i-1]) >= (pre_max + 2) && strs[i][pre_max] == strs[i-1][pre_max] && strs[i][j] == strs[i-1][j] && j < strlen(strs[i-1]) - 1 ; i++)
+            max++;
+       if(max > pre_max){
+           flag = i;
+           pre_max = max;
+       }
+    }
+    memcpy(ret_char , strs[flag] , pre_max);
+    return ret_char;
+}
