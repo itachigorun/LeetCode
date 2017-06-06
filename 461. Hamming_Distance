@@ -1,0 +1,66 @@
+// Address : https://leetcode.com/problems/hamming-distance/#/description
+// Author  : itachigorun
+// Date    : 2017-06-07
+
+
+1.
+int hammingDistance(int x, int y) {
+    int flag = 0;
+    do{
+        if(((x&1) + (y&1) )== 1)
+            flag++;
+        x = x>>1;
+        y = y>>1;
+    }while(x>0||y>0);
+    return flag;
+}
+
+2.
+int hammingDistance(int x, int y) {
+    int flag = 0;
+    int n = x^y;
+    do{
+        if(n&1==1)
+            flag++;
+        n = n>>1;
+    }while(n);
+    return flag;
+}
+
+3.
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int dist = 0, n = x ^ y;
+        while (n) {
+            ++dist;
+            n &= n - 1;
+        }
+        return dist;
+    }
+};
+
+4.
+int hammingDistance(int x, int y) {
+    
+    int tmpInt=x^y;
+    int dis=0;
+    
+    while(tmpInt)
+    {
+        if((tmpInt>>1)<<1 != tmpInt)
+        {
+            ++dis;
+        }
+        
+        tmpInt>>=1;
+    }
+    
+    return dis;
+}
+
+5.
+int hammingDistance(int x, int y) {
+	if((x^y)==0) return 0;
+	return (x^y)%2 + hammingDistance(x/2,y/2);
+}
