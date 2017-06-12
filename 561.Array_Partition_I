@@ -1,0 +1,18 @@
+// Address : https://leetcode.com/problems/array-partition-i/#/description
+// Author  : itachigorun
+// Date    : 2017-06-13
+
+
+int compare(const void *a, const void *b)
+{
+    return *(int *)a - *(int *)b;
+}
+
+int arrayPairSum(int* nums, int numsSize) {
+    int i = 0;
+    int sum = 0;
+    qsort(nums, numsSize, sizeof(int), compare);
+    for(i = 0; i < numsSize - 1; i = i + 2)
+        sum = sum + nums[i];
+    return sum;
+}
