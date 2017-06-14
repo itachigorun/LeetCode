@@ -1,0 +1,65 @@
+// Address : https://leetcode.com/problems/number-complement/#/description
+// Author  : itachigorun
+// Date    : 2017-06-14
+
+int findComplement(int num) {
+     int i = 0;
+     int sum = 0;
+     while(1){
+        if(num%2 == 0)
+           sum += pow(2,i);
+        i++;
+        num = num/2;
+        if(num == 0)
+            break;
+     }
+     return sum;
+}
+
+class Solution {
+public:
+    int findComplement(int num) {
+        unsigned mask = ~0;
+        while (num & mask) mask <<= 1;
+        return ~mask & ~num;
+    }
+};
+
+class Solution {
+public:
+    int findComplement(int num) {
+        unsigned mask = ~0;
+        while (num & mask) mask <<= 1;
+        return num ^ ~mask;
+    }
+};
+
+public int FindComplement(int num) 
+{
+    int mask = 1;
+    while (mask < num) mask = (mask << 1) | 1;
+    return ~num & mask;
+}
+
+public:
+    int findComplement(int num) {
+        return ~num & ((1 <<(int)log2(num))-1);
+    }
+};
+
+int findComplement(long num) {
+    long i;
+    for(i=1;i<=num;i*=2) num^=i; 
+    return num;
+}
+
+int findComplement(int num) {
+    int mask=(1<<(int)(log2(num)+1))-1;
+    return ~num&mask;
+}
+
+public:
+    int findComplement(int num) {
+        return ~num & ((1 <<(int)log2(num))-1);
+    }
+};
