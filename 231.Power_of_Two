@@ -1,0 +1,36 @@
+// Address : https://leetcode.com/problems/power-of-two/#/description
+// Author  : itachigorun
+// Date    : 2017-07-10
+
+
+bool isPowerOfTwo(int n) {
+    int sum = 0;
+    if(n <= 0)
+        return false;
+    while(n && sum<=1){
+        sum += n % 2;
+        n = n / 2;
+    }
+    return sum == 1? true : false;
+}
+
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        if(n<=0) return false;
+        return !(n&(n-1));
+    }
+};
+
+
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        return n > 0 && !(n&(n-1));
+    }
+};
+
+
+if(n==0) return false;
+while(n%2==0) n/=2;
+return (n==1);
