@@ -19,7 +19,7 @@
 
 class Solution {
 public:
-    string convertTo7(int num) {
+    string convertToBase7(int num) {
         if(num == 0) return "0";
         bool isNegative = (num < 0);
         if(num < 0)
@@ -42,8 +42,8 @@ public:
 
 class Solution {
 public:
-    string convertTo7(int num) {
-        return num < 0 ? "-" + convertTo7(-num) : num < 7 ? to_string(num) : convertTo7(num / 7) + to_string(num % 7);
+    string convertToBase7(int num) {
+        return num < 0 ? "-" + convertToBase7(-num) : num < 7 ? to_string(num) : convertToBase7(num / 7) + to_string(num % 7);
     }
 };
 
@@ -51,7 +51,7 @@ public:
 /* the third method--java */
 
 public class Solution {
-    public String convertTo7(int num) {
+    public String convertToBase7(int num) {
         return Integer.toString(num, 7);
     }
 }

@@ -28,3 +28,32 @@ public:
         return l+r +u->val;
     }
 };
+
+C:
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+ int sum = 0;
+
+     
+ int find_null(struct TreeNode *L){
+ 
+     if(L == NULL)
+         return 0;
+     int lf = find_null(L->left);
+     int lr = find_null(L->right);   
+     sum += abs(lf - lr);
+     return L->val + lf + lr;
+
+ }
+ 
+int findTilt(struct TreeNode* root) {
+    sum = 0;
+    find_null(root);
+    return sum;
+}
