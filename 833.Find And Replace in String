@@ -9,6 +9,7 @@ public:
 		string s = sources[ind.second], t = targets[ind.second];
 		if (S.substr(i, s.length()) == s)
 			S = S.substr(0, i) + t + S.substr(i + s.length());
+            //S.replace(i, s.size(), t);  replace替换也可以
 	}
 	return S;
 }
