@@ -1,0 +1,16 @@
+class Solution {
+public:
+ string findReplaceString(string S, vector<int>& indexes, vector<string>& sources, vector<string>& targets) {
+	//vector<pair<int, int>> sorted;
+	map<int, int> sorted;
+	for (int i = 0; i < indexes.size(); i++)
+		sorted.insert(make_pair(indexes[i], i));
+	//sort(sorted.rbegin(), sorted.rend());
+	//for (auto m : sorted)
+	for(map<int,int>::reverse_iterator m = sorted.rbegin();
+		m!=sorted.rend();m++)
+		if (S.substr(m->first, sources[m->second].size()) == sources[m->second])
+			S.replace(m->first, sources[m->second].size(), targets[m->second]);
+	return S;
+}
+};
